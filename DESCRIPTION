@@ -1,11 +1,17 @@
 Package: timesaveR
-Title: What the Package Does (one line, title case)
+Title: Widely used function to save time on everyday work
 Version: 0.0.0.9000
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Authors@R: person("Alessia", "Visconti", email = "alessia.visconti@gmail.com", role = c("aut", "cre"))
+Description: My daily work mostly entails running the same data cleaning, pre- and post-processing functions 
+    over and over again. For months and months. Years. This is a collections of functions doing the 
+	completely different things, their only common denominator is: they save me time. 
+    While some of the functions have been developed 100% by me, others are liberal (or not so liberal)
+	adaptations of other people's work, several of whom I had lost track. I am happy to include attribution
+	whenever I can: if you spot your or someone else's work, please let me know.
 Depends: R (>= 3.5.0)
-License: What license is it under?
+License: GNU General Public License v3.0
 Encoding: UTF-8
 LazyData: true
 Imports: 
-	Hmisc (>= 4.1-1)
+	Hmisc (>= 4.1-1),
+	Matrix (>= 1.2-15)
