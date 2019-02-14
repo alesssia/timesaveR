@@ -2,7 +2,19 @@
 
 My daily work mostly entails running the same data cleaning, pre- and post-processing functions over and over again. For months and months. Years. 
 
-This rough R package includes a collections of functions doing the completely different things, their only common denominator is: they save me time. 
+This rough R package includes a collections of functions doing the completely different things, their only common denominator is that **they save me time**. 
+
+## Installation
+
+
+```r
+devtools::install_github("alesssia/timesaveR")
+```
+
+### Dependencies
+
+* R: https://www.r-project.org/
+* devtools: https://github.com/r-lib/devtools
 
 
 ## License
