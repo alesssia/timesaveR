@@ -14,4 +14,5 @@ Encoding: UTF-8
 LazyData: true
 Imports: 
 	Hmisc (>= 4.1-1),
-	Matrix (>= 1.2-15)
+	biomaRt (>= 2.38.0),
+	mets (>= 1.2.5)
