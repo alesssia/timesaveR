@@ -3,7 +3,7 @@ Title: Widely used function to save time on everyday work
 Version: 0.0.0.9000
 Authors@R: person("Alessia", "Visconti", email = "alessia.visconti@gmail.com", role = c("aut", "cre"))
 Description: My daily work mostly entails running the same data cleaning, pre- and post-processing functions 
-    over and over again. For months and months. Years. This is a collections of functions doing the 
+    over and over again. For weeks, and weeks. Months. Years. This is a collections of functions doing 
 	completely different things, their only common denominator is: they save me time. 
     While some of the functions have been developed 100% by me, others are liberal (or not so liberal)
 	adaptations of other people's work, several of whom I had lost track. I am happy to include attribution
