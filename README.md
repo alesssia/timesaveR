@@ -4,6 +4,7 @@ My daily work mostly entails running the same data cleaning, pre- and post-proce
 
 This rough R package includes a collections of functions doing the completely different things, their only common denominator is that **they save me time**. 
 
+
 ## Installation
 
 

@@ -11,7 +11,7 @@ genomic.inflation.factor <- function(values, type="pvalue")
 #   the “inflation factor” lambda
 #
 {
-	to.chisq <- mychisq(values, type)
+	chisq <- to.chisq(values, type)
 	median(chisq)/qchisq(0.5,1)
 }
 
