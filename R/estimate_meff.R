@@ -1,17 +1,18 @@
 estimate.meff <- function(data, method = c("Cheverud", "Li"))
-# Estimates the effective number of tests in correlated datasets using two different 
-# approaches (Li's is to be preferred)
-# Cheverud JM (2001). A simple correction for multiple comparisons in interval mapping
-# genome scans. Heredity 87
-#
-# @author Jonas Zierer
-# 
-# Args:
-#	data		 : data matrix
-#	method		 : which methods should be used
-# Output:
-# 	effective number of tests
-#
+#' Estimates the effective number of tests
+#'
+#' Estimates the effective number of tests in correlated datasets using two different 
+#' approaches (Li's is to be preferred)
+#' Cheverud JM (2001). A simple correction for multiple comparisons in interval mapping
+#' genome scans. Heredity 87
+#'
+#' @author Jonas Zierer
+#' @param data data matrix
+#' @param method which methods should be used
+#' @return effective number of tests
+#' @examples
+#' data <- matrix(data = rnorm(200), nrow = 10, ncol = 20)
+#' estimate.meff(data, "Li")
 {
 	M        <- ncol(data)
 	cor      <- Hmisc::rcorr(as.matrix(data))

@@ -1,11 +1,14 @@
 inverse.normal <- function(v)
-# Performs the inverse normal transformation
-#
-# Args:
-#	v	: vector of values
-# Output:
-# 	a vector of transformed vectors
-#
+#' Performs the inverse normal transformation
+#'
+#' Performs the inverse normal transformation
+#'
+#' @author Alessia Visconti
+#' @param v	vector of values
+#' @return a vector of transformed vectors
+#' @examples
+#' x <- rexp(100)
+#' inverse.normal(x)
 {
 	#I need to do some tricks, otherwise rank+qnorm will
 	#impute my missing data
