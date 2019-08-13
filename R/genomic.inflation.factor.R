@@ -13,6 +13,7 @@ genomic.inflation.factor <- function(values, type="pvalue")
 #' @examples
 #' pvalues <- abs(rnorm(1000, mean=0.001, sd=0.1))
 #' genomic.inflation.factor(pvalues, "pvalue")
+#' @export
 {
 	chisq <- to.chisq(values, type)
 	median(chisq)/qchisq(0.5,1)

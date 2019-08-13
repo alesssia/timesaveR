@@ -20,6 +20,7 @@ estimate.heritability <- function(myformula, data, DZ="DZ", zyg="ZYGOSITY", fid=
 #' , aics, AICs of all fitted models
 #' , best.m, label for best model (ACE, AE, CE, E)
 #' , best model, the results of the best model
+#' @export
 {
 	#Evaluates all heritability models
 	models <- list()

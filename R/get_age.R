@@ -12,6 +12,7 @@ get.age <- function(born, visit, format.born="%m/%d/%Y", format.visit="%m/%d/%Y"
 #' @return age at visit
 #' @examples
 #' get.age("01/01/1980", "31/12/2019", "%d/%m/%Y", "%d/%m/%Y")
+#' @export
 {
 	born <- as.Date(strptime(born, format.born))
 	visit <- as.Date(strptime(visit, format.visit))

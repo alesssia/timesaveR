@@ -9,6 +9,7 @@ inverse.normal <- function(v)
 #' @examples
 #' x <- rexp(100)
 #' inverse.normal(x)
+#' @export
 {
 	#I need to do some tricks, otherwise rank+qnorm will
 	#impute my missing data

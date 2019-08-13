@@ -5,6 +5,7 @@ biomart.fetch.SNP.grch37.mart <- function()
 #'
 #' @author Alessia Visconti
 #' @return BioMart SNP database (grch37 built, homo sapients)
+#' @export
 {
 	biomaRt::useMart(biomart="ENSEMBL_MART_SNP", host="grch37.ensembl.org", dataset="hsapiens_snp")
 }

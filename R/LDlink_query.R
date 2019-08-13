@@ -13,6 +13,7 @@ LDpair <- function(rs1, rs2, pop="GBR", LDlinktoken)
 #' @return LD between the two given SNPs in the given population
 #' @examples
 #' LDpair("rs123", "rs456", "GBR", "n0tw0rk1ng")
+#' @export
 {
 	command <- paste0("curl -k -X GET 'https://ldlink.nci.nih.gov/LDlinkRest/ldpair?var1=", rs1, "&var2=", rs2, "&pop=", pop, "&token=", LDlinktoken, "'")
 	ld <- system(command, intern = TRUE)[22]
@@ -36,6 +37,7 @@ LDproxy <- function(rs, r2=c("r2", "d"), pop="GBR", LDlinktoken, min.r2=0.01, ma
 #' @return SNPs that are proxies for the given SNP
 #' @examples
 #' LDproxy("rs123", "r2", "GBR", "n0tw0rk1ng", min.r2=0.8, max.distance=500000)
+#' @export
 {
 	command <- paste0("curl -k -X GET 'https://ldlink.nci.nih.gov/LDlinkRest/ldproxy?var=", rs, "&pop=", pop, "&r2_d=", r2, "&token=", LDlinktoken, "'")
 	proxies <- system(command, intern = TRUE)

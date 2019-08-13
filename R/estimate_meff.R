@@ -13,6 +13,7 @@ estimate.meff <- function(data, method = c("Cheverud", "Li"))
 #' @examples
 #' data <- matrix(data = rnorm(200), nrow = 10, ncol = 20)
 #' estimate.meff(data, "Li")
+#' @export
 {
 	M        <- ncol(data)
 	cor      <- Hmisc::rcorr(as.matrix(data))

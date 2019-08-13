@@ -11,6 +11,7 @@ remove.outliers <- function(v, n.sd=3)
 #' @examples
 #' x <- rexp(100)
 #' remove.outliers(x)
+#' @export
 {
 	avg <- mean(v, na.rm=T)
 	stdev <- sd(v, na.rm=T)
