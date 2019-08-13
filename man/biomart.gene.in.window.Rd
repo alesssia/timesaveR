@@ -4,7 +4,7 @@
 \alias{biomart.gene.in.window}
 \title{Fetches the HUGO gene symbols in the spefified window}
 \usage{
-biomart.gene.in.window(chr, start, end, mart)
+biomart.gene.in.window(chr, start, end, mart, with.position = FALSE)
 }
 \arguments{
 \item{chr}{chromosome number (1, 2, ...)}
@@ -14,9 +14,11 @@ biomart.gene.in.window(chr, start, end, mart)
 \item{end}{last position of the window (included)}
 
 \item{mart}{BioMart database}
+
+\item{with.position}{whether included chromosome name and start and end position (default: false)}
 }
 \value{
-HUGO gene symbols
+HUGO gene symbols, or HUGO gene symbols plus gene boudaries
 }
 \description{
 Uses biomaRt function to fetch the HUGO gene symbols for those genes included in the 

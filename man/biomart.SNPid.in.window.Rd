@@ -4,7 +4,7 @@
 \alias{biomart.SNPid.in.window}
 \title{Fetches the reference SNP IDs in the spefified window}
 \usage{
-biomart.SNPid.in.window(chr, start, end, mart)
+biomart.SNPid.in.window(chr, start, end, mart, with.position = FALSE)
 }
 \arguments{
 \item{chr}{chromosome number (1, 2, ...)}
@@ -14,9 +14,11 @@ biomart.SNPid.in.window(chr, start, end, mart)
 \item{end}{last position of the window (included)}
 
 \item{mart}{BioMart database}
+
+\item{with.position}{whether included chromosome name and start and end position (default: false)}
 }
 \value{
-reference SNP IDs
+reference SNP IDs, or reference SNP IDs plus genomic coordinates
 }
 \description{
 Uses biomaRt function to fetch the reference SNP IDs for those SNPs included in the 
@@ -25,6 +27,7 @@ specified window. It uses the given BioMart database
 \examples{
 mybiomart <- biomart.fetch.SNP.grch37.mart()
 biomart.SNPid.in.window(1, 1, 10100, mybiomart)
+biomart.SNPid.in.window(1, 1, 10100, mybiomart, with.position=TRUE)
 }
 \author{
 Alessia Visconti
