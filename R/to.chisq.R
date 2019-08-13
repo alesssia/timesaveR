@@ -1,14 +1,19 @@
-to.chisq <- function(values, type="pvalue")
-# Transform statistical distribition to chi-squared values
-#
-# Args:
-#   values   : the statistic distribution
-#   type	 : statistic distribution (allowed: zscore, chisq, pvalue -- default: pvalue)
-# Output:
-#   the chi-squared values
-#
+to.chisq <- function(values, type=c("zscore", "chisq", "pvalue"))
+#' Transform statistical distribition to chi-squared values
+#' 
+#' Given a vector of numerical values and which type of statistical
+#' distribition thet are (i.e., chisq, pvalue, zscore) it coverts 
+#' them in chi-squared.
+#'
+#' @author Alessia Visconti
+#' @param values a vector of numerical values
+#' @param type which type of statistic distribution
+#' @return chi-squared values
+#' @examples
+#' pvalues <- abs(rnorm(100, mean=0, sd=0.1))
+#' to.chisq(pvalues, "pvalue")
+#' @export
 {
-	
 	# Values should be numeric
 	if (class(values) != "numeric")
 	{
