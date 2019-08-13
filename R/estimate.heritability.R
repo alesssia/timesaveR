@@ -24,10 +24,10 @@ estimate.heritability <- function(myformula, data, DZ="DZ", zyg="ZYGOSITY", fid=
 {
 	#Evaluates all heritability models
 	models <- list()
-	models$ACE <- mets::twinlm(as.formula(myformula), data=data, DZ=DZ, zyg=zyg, id=fid, type="ace")
-	models$AE <- mets::twinlm(as.formula(myformula), data=data, DZ=DZ, zyg=zyg, id=fid, type="ae")
-	models$CE <- mets::twinlm(as.formula(myformula), data=data, DZ=DZ, zyg=zyg, id=fid, type="ce")
-	models$E <- mets::twinlm(as.formula(myformula), data=data, DZ=DZ, zyg=zyg, id=fid, type="e")
+	models$ACE <- mets::twinlm(formula(myformula), data=data, DZ=DZ, zyg=zyg, id=fid, type="ace")
+	models$AE <- mets::twinlm(formula(myformula), data=data, DZ=DZ, zyg=zyg, id=fid, type="ae")
+	models$CE <- mets::twinlm(formula(myformula), data=data, DZ=DZ, zyg=zyg, id=fid, type="ce")
+	models$E <- mets::twinlm(formula(myformula), data=data, DZ=DZ, zyg=zyg, id=fid, type="e")
 	
 	#Evaluates AIC
 	aics <- c(AIC(models$ACE), AIC(models$AE), AIC(models$CE), AIC(models$E))

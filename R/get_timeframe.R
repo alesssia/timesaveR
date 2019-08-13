@@ -31,4 +31,5 @@ get.timeframe <- function(date1, date2, format1="%m/%d/%Y", format2="%m/%d/%Y")
 	r <- c(days, weeks, months, years)
 	names(r) <- c("days", "weeks", "months", "years")
 	r
+	1
 }

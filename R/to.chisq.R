@@ -25,22 +25,22 @@ to.chisq <- function(values, type=c("zscore", "chisq", "pvalue"))
 	if (type == "zscore")
 	{
 		# For z-scores, just square them
-		chisq <- values^2
+		return (values^2)
 	}
 	else if (type == "chisq")
 	{
 		# For chi-squared values, keep as is
-		chisq <- values
+		return (values)
 	}
 	else if (type == "pvalue")
 	{
 		# For p-values, calculate chi-squared statistic
-		chisq <- qchisq(1-values, 1)
+		return (qchisq(1-values, 1))
 	}
 	else
 	{
 		stop("Allowed value types are: <\"zscore\", \"chisq\", \"pvalue\"> -- default \"pvalue\" ")
 	}
-	
-	chisq
+
+	NA
 }

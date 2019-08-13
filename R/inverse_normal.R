@@ -17,9 +17,9 @@ inverse.normal <- function(v)
 	colnames(v) <- colnames(v1) <- c("index", "v")
 	v1 <- na.omit(v1)
 	
-	mrank <- rank(v1$v, na.last=T)
+	mrank <- rank(v1$v, na.last=TRUE)
 	v1$v <- qnorm(mrank/max(mrank+1))
 	
-	v <- merge(v, v1, by="index", all=T)
+	v <- merge(v, v1, by="index", all=TRUE)
 	v$v.y
 }

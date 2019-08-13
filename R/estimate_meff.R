@@ -17,7 +17,7 @@ estimate.meff <- function(data, method = c("Cheverud", "Li"))
 {
 	M        <- ncol(data)
 	cor      <- Hmisc::rcorr(as.matrix(data))
-	eigen    <- eigen(cor$r, symmetric = T)
+	eigen    <- eigen(cor$r, symmetric = TRUE)
 	
 	if (method == "Cheverud")
 	{
