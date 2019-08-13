@@ -34,6 +34,8 @@ LDproxy <- function(rs, r2=c("r2", "d"), pop="GBR", LDlinktoken, min.r2=0.01, ma
 #' @param r2 whether look for r2 or D'
 #' @param pop population (multiple populations should be formatted as pop1\%2pop2\%2pop3)
 #' @param LDlinktoken personal token (request via \url{https://ldlink.nci.nih.gov/?tab=apiaccess})
+#' @param min.r2 minum LD (r2) to return 
+#' @param max.distance maximun distance (in bp) to return 
 #' @return SNPs that are proxies for the given SNP
 #' @examples
 #' LDproxy("rs123", "r2", "GBR", "n0tw0rk1ng", min.r2=0.8, max.distance=500000)

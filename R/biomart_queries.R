@@ -16,6 +16,7 @@ biomart.fetch.GENE.grch37.mart <- function()
 #' Uses biomaRt function to fetch the Ensembl Gene DB (grch37 built, homo sapients)
 #'
 #' @return BioMart Gene database (grch37 built, homo sapients)
+#' @export
 {
 	biomaRt::useMart(biomart = "ENSEMBL_MART_ENSEMBL", host = "grch37.ensembl.org", dataset = "hsapiens_gene_ensembl")
 }
@@ -36,6 +37,7 @@ biomart.SNPid.in.window <- function(chr, start, end, mart)
 #' @examples
 #' mybiomart <- biomart.fetch.SNP.grch37.mart()
 #' biomart.SNPid.in.window(1, 1, 10100, mybiomart)
+#' @export
 {
 	m <- biomaRt::getBM(attributes = c('refsnp_id', 'chr_name', 'chrom_start'),
 	filters = c('chr_name', 'start', 'end'), values = list(chromosome_name=chr, start=start, end=end),  mart = mart)
@@ -57,6 +59,7 @@ biomart.gene.in.window <- function(chr, start, end,  mart)
 #' @examples
 #' mybiomart <- biomart.fetch.GENE.grch37.mart()
 #' biomart.gene.in.window(1, 1, 20000, mybiomart)
+#' @export
 {
 	m <- biomaRt::getBM(attributes=c("hgnc_symbol"), filters = c("chromosome_name","start","end"), values=list(chr, start, end), mart = mart)
 	m$hgnc_symbol

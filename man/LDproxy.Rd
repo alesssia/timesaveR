@@ -15,6 +15,10 @@ LDproxy(rs, r2 = c("r2", "d"), pop = "GBR", LDlinktoken,
 \item{pop}{population (multiple populations should be formatted as pop1\%2pop2\%2pop3)}
 
 \item{LDlinktoken}{personal token (request via \url{https://ldlink.nci.nih.gov/?tab=apiaccess})}
+
+\item{min.r2}{minum LD (r2) to return}
+
+\item{max.distance}{maximun distance (in bp) to return}
 }
 \value{
 SNPs that are proxies for the given SNP

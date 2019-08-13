@@ -4,7 +4,7 @@ likelihood.ratio.test <- function (L0, L1)
 #' Compares the goodness of fit of a null model (LO) against an alternative model (L1)
 #'
 #' @author Alessia Visconti
-#' @param LO null model likelihood
+#' @param L0 null model likelihood
 #' @param L1 alternative model likelihood
 #' @return p value assessing the goodness of fit
 #' @examples

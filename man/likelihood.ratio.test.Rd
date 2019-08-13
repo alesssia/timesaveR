@@ -9,9 +9,9 @@ Compares the goodness of fit of a null model (LO) against an alternative model (
 likelihood.ratio.test(L0, L1)
 }
 \arguments{
-\item{L1}{alternative model likelihood}
+\item{L0}{null model likelihood}
 
-\item{LO}{null model likelihood}
+\item{L1}{alternative model likelihood}
 }
 \value{
 p value assessing the goodness of fit
