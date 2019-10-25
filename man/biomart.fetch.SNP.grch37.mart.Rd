@@ -12,6 +12,9 @@ BioMart SNP database (grch37 built, homo sapients)
 \description{
 Uses biomaRt function to fetch the Ensembl SNP DB (grch37 built, homo sapients)
 }
+\examples{
+mybiomart <- biomart.fetch.SNP.grch37.mart()
+}
 \author{
 Alessia Visconti
 }

@@ -12,3 +12,6 @@ BioMart Gene database (grch37 built, homo sapients)
 \description{
 Uses biomaRt function to fetch the Ensembl Gene DB (grch37 built, homo sapients)
 }
+\examples{
+mybiomart <- biomart.fetch.GENE.grch37.mart()
+}

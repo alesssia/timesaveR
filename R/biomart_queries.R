@@ -57,6 +57,28 @@ biomart.SNPid.in.window <- function(chr, start, end, mart, with.position=FALSE)
 	}
 }
 
+biomart.SNP.position <- function(rs, mart) 
+#' Fetches the chromosomal coordinates of the specified SNP IDs 
+#'
+#' Uses biomaRt function to fetch the chromosomal coordinates for the given 
+#' SNP IDs It uses the given BioMart database.
+#'
+#' @author Alessia Visconti
+#' @param rs the variant mame (rs ID, ...)
+#' @param mart BioMart database
+#' @return reference SNP IDs with its plus genomic coordinates 
+#' @examples
+#' mybiomart <- biomart.fetch.SNP.grch37.mart()
+#' biomart.SNP.position("rs9890579", mybiomart)
+#' @export
+{
+	#Query
+	m <- biomaRt::getBM(attributes = c('refsnp_id', 'chr_name', 'chrom_start'), filters = c('snp_filter'), values = list(snp_filter=rs),  mart = mart)
+	colnames(m) <- c("SNP", "CHR", "BP")
+	m
+}
+
+
 biomart.gene.in.window <- function(chr, start, end,  mart, with.position=FALSE) 
 #' Fetches the HUGO gene symbols in the spefified window
 #'
