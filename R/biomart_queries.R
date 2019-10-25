@@ -5,6 +5,8 @@ biomart.fetch.SNP.grch37.mart <- function()
 #'
 #' @author Alessia Visconti
 #' @return BioMart SNP database (grch37 built, homo sapients)
+#' @examples
+#' mybiomart <- biomart.fetch.SNP.grch37.mart()
 #' @export
 {
 	biomaRt::useMart(biomart="ENSEMBL_MART_SNP", host="grch37.ensembl.org", dataset="hsapiens_snp")
@@ -16,6 +18,8 @@ biomart.fetch.GENE.grch37.mart <- function()
 #' Uses biomaRt function to fetch the Ensembl Gene DB (grch37 built, homo sapients)
 #'
 #' @return BioMart Gene database (grch37 built, homo sapients)
+#' @examples
+#' mybiomart <- biomart.fetch.GENE.grch37.mart()
 #' @export
 {
 	biomaRt::useMart(biomart = "ENSEMBL_MART_ENSEMBL", host = "grch37.ensembl.org", dataset = "hsapiens_gene_ensembl")
