@@ -4,8 +4,14 @@
 \alias{LDproxy}
 \title{Fetches all SNPs in LD with a given SNP}
 \usage{
-LDproxy(rs, r2 = c("r2", "d"), pop = "GBR", LDlinktoken,
-  min.r2 = 0.01, max.distance = 5e+05)
+LDproxy(
+  rs,
+  r2 = c("r2", "d"),
+  pop = "GBR",
+  LDlinktoken,
+  min.r2 = 0.01,
+  max.distance = 5e+05
+)
 }
 \arguments{
 \item{rs}{reference SNP ID}

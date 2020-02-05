@@ -4,8 +4,13 @@
 \alias{estimate.heritability}
 \title{Estimates ACE, AE, CE, and E heritability models}
 \usage{
-estimate.heritability(myformula, data, DZ = "DZ", zyg = "ZYGOSITY",
-  fid = "FID")
+estimate.heritability(
+  myformula,
+  data,
+  DZ = "DZ",
+  zyg = "ZYGOSITY",
+  fid = "FID"
+)
 }
 \arguments{
 \item{myformula}{the model to be fit (trait ~ 1 + covariate)}

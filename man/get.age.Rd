@@ -4,8 +4,7 @@
 \alias{get.age}
 \title{Evaluates age difference between dates}
 \usage{
-get.age(born, visit, format.born = "\%m/\%d/\%Y",
-  format.visit = "\%m/\%d/\%Y")
+get.age(born, visit, format.born = "\%m/\%d/\%Y", format.visit = "\%m/\%d/\%Y")
 }
 \arguments{
 \item{born}{date of birth (character)}

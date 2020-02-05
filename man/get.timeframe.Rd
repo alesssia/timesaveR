@@ -4,8 +4,7 @@
 \alias{get.timeframe}
 \title{Evaluates day, week, month, and age differences between dates}
 \usage{
-get.timeframe(date1, date2, format1 = "\%m/\%d/\%Y",
-  format2 = "\%m/\%d/\%Y")
+get.timeframe(date1, date2, format1 = "\%m/\%d/\%Y", format2 = "\%m/\%d/\%Y")
 }
 \arguments{
 \item{date1}{first date (string)}

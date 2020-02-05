@@ -26,35 +26,40 @@ biomart.fetch.GENE.grch37.mart <- function()
 }
 
 
-biomart.SNPid.in.window <- function(chr, start, end, mart, with.position=FALSE) 
+biomart.SNPid.in.window <- function(chr, start, end, mart, with.position=FALSE, with.alleles=FALSE) 
 #' Fetches the reference SNP IDs in the spefified window
 #'
 #' Uses biomaRt function to fetch the reference SNP IDs for those SNPs included in the 
-#' specified window. It uses the given BioMart database
+#' specified window. It uses the given BioMart database.
 #'
 #' @author Alessia Visconti
 #' @param chr chromosome number (1, 2, ...)
 #' @param start fist position of the window (included)
 #' @param end last position of the window (included)
 #' @param mart BioMart database
-#' @param with.position whether included chromosome name and start and end position (default: false)
-#' @return reference SNP IDs, or reference SNP IDs plus genomic coordinates 
+#' @param with.position whether including chromosome name and start and end position (default: false)
+#' @param with.alleles whether including variant alleles (default: false, if true with.position is forced to TRUE)
+#' @return reference SNP IDs, or reference SNP IDs plus genomic coordinates and alleles
 #' @examples
 #' mybiomart <- biomart.fetch.SNP.grch37.mart()
 #' biomart.SNPid.in.window(1, 1, 10100, mybiomart)
 #' biomart.SNPid.in.window(1, 1, 10100, mybiomart, with.position=TRUE)
+#' biomart.SNPid.in.window(1, 1, 10100, mybiomart, with.alleles=TRUE)
 #' @export
 {
 	#Query
-	m <- biomaRt::getBM(attributes = c('refsnp_id', 'chr_name', 'chrom_start'), filters = c('chr_name', 'start', 'end'), values = list(chromosome_name=chr, start=start, end=end),  mart = mart)
+	m <- biomaRt::getBM(attributes = c('refsnp_id', 'chr_name', 'chrom_start', 'allele'), filters = c('chr_name', 'start', 'end'), values = list(chromosome_name=chr, start=start, end=end),  mart = mart)
+	colnames(m) <- c("SNP", "CHR", "BP", "Allele")
 	
 	#Selects attributes
-	if (with.position) {
-		colnames(m) <- c("SNP", "CHR", "BP")
+	if (with.alleles) {
 		return(m)
+	} else if (with.position) {
+		return(m[, c("SNP", "CHR", "BP")])
 	} else {
-		return(m$refsnp_id)
+		return(m$SNP)
 	}
+	
 }
 
 biomart.SNP.position <- function(rs, mart) 

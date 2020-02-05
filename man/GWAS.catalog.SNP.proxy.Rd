@@ -4,8 +4,14 @@
 \alias{GWAS.catalog.SNP.proxy}
 \title{Fetches associations in the GWAS Catalog involving the gived all proxy SNP}
 \usage{
-GWAS.catalog.SNP.proxy(rs, r2 = c("r2", "d"), pop = "GBR", LDlinktoken,
-  min.r2 = 0.01, max.distance = 5e+05)
+GWAS.catalog.SNP.proxy(
+  rs,
+  r2 = c("r2", "d"),
+  pop = "GBR",
+  LDlinktoken,
+  min.r2 = 0.01,
+  max.distance = 5e+05
+)
 }
 \arguments{
 \item{rs}{reference SNP IDs for the variant}

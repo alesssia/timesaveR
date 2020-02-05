@@ -30,6 +30,12 @@ While some of the functions have been developed 100% by me, others are liberal (
 
 ## Changelog
 
+### 0.0.1.3 / 2020-02-05
+
+Enhancements:
+* Functions `biomart.SNPid.in.window` can now return also the variant alleles
+
+
 ### 0.0.1.2 / 2019-10-25
 
 Enhancements:
