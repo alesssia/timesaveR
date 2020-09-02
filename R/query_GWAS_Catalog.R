@@ -1,5 +1,5 @@
 GWAS.catalog.SNP <- function(rs)
-#' Fetches associations in the GWAS Catalog involving the gived SNP
+#' Fetches associations in the GWAS Catalog involving the given SNPs
 #'
 #' Uses GWAS Catalog Access via API (\url{https://www.ebi.ac.uk/gwas/rest/docs/api}).
 #' to fetch GWAS associations. If no associations is found, NULL is returned.
@@ -28,6 +28,7 @@ GWAS.catalog.SNP <- function(rs)
 		strongestRiskAlleles <- r$strongestRiskAlleles
 		strongestRiskAlleles <- lapply(strongestRiskAlleles, function(l) {l$"_links" <- NULL; l})
 		strongestRiskAlleles <- do.call(rbind, strongestRiskAlleles)
+		apply(strongestRiskAlleles, 2, paste, collapse=";")
 	}))
 	association$loci <- NULL
 		
@@ -54,11 +55,12 @@ GWAS.catalog.SNP.proxy <- function(rs, r2=c("r2", "d"), pop="GBR", LDlinktoken, 
 #' Uses LDproxy Programmatic Access via API (\url{https://ldlink.nci.nih.gov/?tab=ldproxy}),
 #' to extract the proxy SNPs, and then uses GWAS Catalog Access via API 
 #' (\url{https://www.ebi.ac.uk/gwas/rest/docs/api}) to fetch the GWAS associations.
+#' According to the LDLink CoC, this script should be run sequentially.
 #' If no associations is found, NULL is returned.
 #' 
 #' @author Alessia Visconti
 #' @param rs reference SNP IDs for the variant
-#' @param r2 whether look for r2 or D'
+#' @param r2 whether use r2 or D' (use "r2" and "d", respectively)
 #' @param pop population (multiple populations should be formatted as pop1\%2pop2\%2pop3)
 #' @param LDlinktoken personal token (request via \url{https://ldlink.nci.nih.gov/?tab=apiaccess})
 #' @param min.r2 minum LD (r2) to return 
@@ -67,16 +69,21 @@ GWAS.catalog.SNP.proxy <- function(rs, r2=c("r2", "d"), pop="GBR", LDlinktoken, 
 #' @seealso LDproxy
 #' @seealso GWAS.catalog.SNP
 #' @examples
-#' GWAS.catalog.SNP.proxy("rs7681615", "r2", "GBR", "n0tw0rk1ng", "0.8", "500000")
-#' GWAS.catalog.SNP.proxy("rs4693052", "r2", "GBR", "n0tw0rk1ng", "0.8", "500000")
+#' GWAS.catalog.SNP.proxy("rs7681615", "r2", "GBR", "n0tw0rk1ng", 0.8, 500000)
+#' GWAS.catalog.SNP.proxy("rs4693052", "r2", "GBR", "n0tw0rk1ng", 0.8, 500000)
 #' @export
 {
-	#Selects proxy SNPs
-	snps <- LDproxy(rs, r2, pop, LDlinktoken, min.r2=min.r2, max.distance=max.distance)
-	
-	if (nrow(snps) == 0) return(NULL)
+	#Selects proxy SNPs and catch errors
+	snps <- tryCatch({ 
+		LDproxy(rs, r2, pop, LDlinktoken, min.r2=min.r2, max.distance=max.distance)$RS_Number
+	}, warning = function(w) { 
+		LDproxy(rs, r2, pop, LDlinktoken, min.r2=min.r2, max.distance=max.distance)$RS_Number
+	}, error = function(e) { 
+		#If there are errors, I use only the SNP selected
+		rs
+	})
 	
 	#Gets the associations
-	associations <- lapply(snps$RS_Number, GWAS.catalog.SNP)
+	associations <- lapply(snps, GWAS.catalog.SNP)
 	do.call(rbind, associations) 
 }

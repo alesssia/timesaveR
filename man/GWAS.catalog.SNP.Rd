@@ -2,7 +2,7 @@
 % Please edit documentation in R/query_GWAS_Catalog.R
 \name{GWAS.catalog.SNP}
 \alias{GWAS.catalog.SNP}
-\title{Fetches associations in the GWAS Catalog involving the gived SNP}
+\title{Fetches associations in the GWAS Catalog involving the given SNPs}
 \usage{
 GWAS.catalog.SNP(rs)
 }

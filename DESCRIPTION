@@ -1,6 +1,6 @@
 Package: timesaveR
 Title: Widely used function to save time on everyday work
-Version: 0.0.1.3
+Version: 0.0.1.4
 Authors@R: person("Alessia", "Visconti", email = "alessia.visconti@gmail.com", role = c("aut", "cre"))
 Maintainer: Alessia Visconti <alessia.visconti@gmail.com>
 URL: https://github.com/alesssia/timesaveR

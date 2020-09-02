@@ -16,7 +16,7 @@ LDproxy(
 \arguments{
 \item{rs}{reference SNP ID}
 
-\item{r2}{whether look for r2 or D'}
+\item{r2}{whether use r2 or D' (use "r2" and "d", respectively)}
 
 \item{pop}{population (multiple populations should be formatted as pop1\%2pop2\%2pop3)}
 
@@ -34,7 +34,7 @@ Uses LDproxy Programmatic Access via API (\url{https://ldlink.nci.nih.gov/?tab=l
 LDproxy allows extracting all SNPs in LD with an r2 of at least min.r2 and at a maximun 
 distance of max.distance. 
 It processes one SNP at a time.
-According to the CoC, this script should be run sequentially.
+According to the LDLink CoC, this script should be run sequentially.
 }
 \examples{
 LDproxy("rs123", "r2", "GBR", "n0tw0rk1ng", min.r2=0.8, max.distance=500000)

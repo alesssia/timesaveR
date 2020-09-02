@@ -16,7 +16,7 @@ GWAS.catalog.SNP.proxy(
 \arguments{
 \item{rs}{reference SNP IDs for the variant}
 
-\item{r2}{whether look for r2 or D'}
+\item{r2}{whether use r2 or D' (use "r2" and "d", respectively)}
 
 \item{pop}{population (multiple populations should be formatted as pop1\%2pop2\%2pop3)}
 
@@ -33,11 +33,12 @@ a data frame listing the associations recorded in the GWAS catalog
 Uses LDproxy Programmatic Access via API (\url{https://ldlink.nci.nih.gov/?tab=ldproxy}),
 to extract the proxy SNPs, and then uses GWAS Catalog Access via API 
 (\url{https://www.ebi.ac.uk/gwas/rest/docs/api}) to fetch the GWAS associations.
+According to the LDLink CoC, this script should be run sequentially.
 If no associations is found, NULL is returned.
 }
 \examples{
-GWAS.catalog.SNP.proxy("rs7681615", "r2", "GBR", "n0tw0rk1ng", "0.8", "500000")
-GWAS.catalog.SNP.proxy("rs4693052", "r2", "GBR", "n0tw0rk1ng", "0.8", "500000")
+GWAS.catalog.SNP.proxy("rs7681615", "r2", "GBR", "n0tw0rk1ng", 0.8, 500000)
+GWAS.catalog.SNP.proxy("rs4693052", "r2", "GBR", "n0tw0rk1ng", 0.8, 500000)
 }
 \seealso{
 LDproxy

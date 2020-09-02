@@ -16,6 +16,7 @@ devtools::install_github("alesssia/timesaveR")
 
 * R: https://www.r-project.org/
 * devtools: https://github.com/r-lib/devtools
+* Functions calculating linkage disequilibrium statistics query the [LDproxy Programmatic Access](https://ldlink.nci.nih.gov/?tab=home) via [API](https://ldlink.nci.nih.gov/?tab=apiaccess). This requires a LDlink personal token, that can be requested  [here](https://ldlink.nci.nih.gov/?tab=apiaccess).
 
 
 ## License
@@ -29,6 +30,12 @@ While some of the functions have been developed 100% by me, others are liberal (
 
 
 ## Changelog
+
+### 0.0.1.4 / 2020-09-02
+
+Enhancements:
+* Improved handling of errors when linkage disequilibrium statistics are used
+
 
 ### 0.0.1.3 / 2020-02-05
 

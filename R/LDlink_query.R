@@ -3,7 +3,7 @@ LDpair <- function(rs1, rs2, pop="GBR", LDlinktoken)
 #'
 #' Uses LDlink Programmatic Access via API (\url{https://ldlink.nci.nih.gov/?tab=ldpair}).
 #' LDlink allows extracting LD between two given SNPs in a given population.
-#' According to the CoC, this script should be run sequentially.
+#' According to the LDLink CoC, this script should be run sequentially.
 #' 
 #' @author Alessia Visconti
 #' @param rs1 reference SNP IDs for the first variant
@@ -27,11 +27,11 @@ LDproxy <- function(rs, r2=c("r2", "d"), pop="GBR", LDlinktoken, min.r2=0.01, ma
 #' LDproxy allows extracting all SNPs in LD with an r2 of at least min.r2 and at a maximun 
 #' distance of max.distance. 
 #' It processes one SNP at a time.
-#' According to the CoC, this script should be run sequentially.
+#' According to the LDLink CoC, this script should be run sequentially.
 #' 
 #' @author Alessia Visconti
 #' @param rs reference SNP ID 
-#' @param r2 whether look for r2 or D'
+#' @param r2 whether use r2 or D' (use "r2" and "d", respectively)
 #' @param pop population (multiple populations should be formatted as pop1\%2pop2\%2pop3)
 #' @param LDlinktoken personal token (request via \url{https://ldlink.nci.nih.gov/?tab=apiaccess})
 #' @param min.r2 minum LD (r2) to return 
@@ -43,6 +43,14 @@ LDproxy <- function(rs, r2=c("r2", "d"), pop="GBR", LDlinktoken, min.r2=0.01, ma
 {
 	command <- paste0("curl -k -X GET 'https://ldlink.nci.nih.gov/LDlinkRest/ldproxy?var=", rs, "&pop=", pop, "&r2_d=", r2, "&token=", LDlinktoken, "'")
 	proxies <- system(command, intern = TRUE)
+	
+	#Manages one of the errors returned by LDLink
+	if (grepl("is not a biallelic variant|is not in dbSNP build", proxies[[2]])) 
+	{
+		message <- unlist(strsplit(proxies[[2]], split=":"))[2]
+		stop(message)
+	}
+		
 	proxies <- t(sapply(proxies, function(s) unlist(strsplit(s, split="\t"))))
 	rownames(proxies) <- NULL
 	colnames(proxies) <- proxies[1, ]

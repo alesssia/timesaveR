@@ -21,7 +21,7 @@ LD between the two given SNPs in the given population
 \description{
 Uses LDlink Programmatic Access via API (\url{https://ldlink.nci.nih.gov/?tab=ldpair}).
 LDlink allows extracting LD between two given SNPs in a given population.
-According to the CoC, this script should be run sequentially.
+According to the LDLink CoC, this script should be run sequentially.
 }
 \examples{
 LDpair("rs123", "rs456", "GBR", "n0tw0rk1ng")

@@ -37,7 +37,7 @@ specified window. It uses the given BioMart database.
 mybiomart <- biomart.fetch.SNP.grch37.mart()
 biomart.SNPid.in.window(1, 1, 10100, mybiomart)
 biomart.SNPid.in.window(1, 1, 10100, mybiomart, with.position=TRUE)
-biomart.SNPid.in.window(1, 1, 10100, mybiomart, with.allele=TRUE)
+biomart.SNPid.in.window(1, 1, 10100, mybiomart, with.alleles=TRUE)
 }
 \author{
 Alessia Visconti
