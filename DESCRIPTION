@@ -20,5 +20,5 @@ Imports:
 	Hmisc (>= 4.1-1),
 	jsonlite (>= 1.6),
 	mets (>= 1.2.5)
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
 biocViews:

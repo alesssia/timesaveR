@@ -4,15 +4,17 @@
 \alias{biomart.SNP.position}
 \title{Fetches the chromosomal coordinates of the specified SNP IDs}
 \usage{
-biomart.SNP.position(rs, mart)
+biomart.SNP.position(rs, mart, with.alleles = FALSE)
 }
 \arguments{
 \item{rs}{the variant mame (rs ID, ...)}
 
 \item{mart}{BioMart database}
+
+\item{with.alleles}{whether including variant alleles (default: FALSE)}
 }
 \value{
-reference SNP IDs with its plus genomic coordinates
+reference SNP IDs with its genomic coordinates, or reference SNP IDs with its genomic coordinate and alleles
 }
 \description{
 Uses biomaRt function to fetch the chromosomal coordinates for the given 
@@ -21,6 +23,7 @@ SNP IDs It uses the given BioMart database.
 \examples{
 mybiomart <- biomart.fetch.SNP.grch37.mart()
 biomart.SNP.position("rs9890579", mybiomart)
+biomart.SNP.position("rs9890579", mybiomart, with.alleles=TRUE)
 }
 \author{
 Alessia Visconti

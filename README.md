@@ -35,7 +35,8 @@ While some of the functions have been developed 100% by me, others are liberal (
 
 Enhancements:
 * Improved handling of errors when linkage disequilibrium statistics are used
-
+* `biomart.SNP.position` can now return also the variant alleles
+* Added a function (`biomart.SNP.rsID`) that returns the rsID given the chromosomal coordinates and the alleles
 
 ### 0.0.1.3 / 2020-02-05
 

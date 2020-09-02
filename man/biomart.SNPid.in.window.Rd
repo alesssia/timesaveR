@@ -24,7 +24,7 @@ biomart.SNPid.in.window(
 
 \item{with.position}{whether including chromosome name and start and end position (default: false)}
 
-\item{with.alleles}{whether including variant alleles (default: false, if true with.position is forced to TRUE)}
+\item{with.alleles}{whether including variant alleles (default: false, if with.position==TRUE is forced to TRUE)}
 }
 \value{
 reference SNP IDs, or reference SNP IDs plus genomic coordinates and alleles

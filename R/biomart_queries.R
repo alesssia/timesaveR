@@ -38,7 +38,7 @@ biomart.SNPid.in.window <- function(chr, start, end, mart, with.position=FALSE, 
 #' @param end last position of the window (included)
 #' @param mart BioMart database
 #' @param with.position whether including chromosome name and start and end position (default: false)
-#' @param with.alleles whether including variant alleles (default: false, if true with.position is forced to TRUE)
+#' @param with.alleles whether including variant alleles (default: false, if with.position==TRUE is forced to TRUE)
 #' @return reference SNP IDs, or reference SNP IDs plus genomic coordinates and alleles
 #' @examples
 #' mybiomart <- biomart.fetch.SNP.grch37.mart()
@@ -62,7 +62,7 @@ biomart.SNPid.in.window <- function(chr, start, end, mart, with.position=FALSE, 
 	
 }
 
-biomart.SNP.position <- function(rs, mart) 
+biomart.SNP.position <- function(rs, mart, with.alleles=FALSE) 
 #' Fetches the chromosomal coordinates of the specified SNP IDs 
 #'
 #' Uses biomaRt function to fetch the chromosomal coordinates for the given 
@@ -71,16 +71,73 @@ biomart.SNP.position <- function(rs, mart)
 #' @author Alessia Visconti
 #' @param rs the variant mame (rs ID, ...)
 #' @param mart BioMart database
-#' @return reference SNP IDs with its plus genomic coordinates 
+#' @param with.alleles whether including variant alleles (default: FALSE)
+#' @return reference SNP IDs with its genomic coordinates, or reference SNP IDs with its genomic coordinate and alleles
 #' @examples
 #' mybiomart <- biomart.fetch.SNP.grch37.mart()
 #' biomart.SNP.position("rs9890579", mybiomart)
+#' biomart.SNP.position("rs9890579", mybiomart, with.alleles=TRUE)
 #' @export
 {
 	#Query
-	m <- biomaRt::getBM(attributes = c('refsnp_id', 'chr_name', 'chrom_start'), filters = c('snp_filter'), values = list(snp_filter=rs),  mart = mart)
-	colnames(m) <- c("SNP", "CHR", "BP")
-	m
+	m <- biomaRt::getBM(attributes = c('refsnp_id', 'chr_name', 'chrom_start', 'allele'), filters = c('snp_filter'), values = list(snp_filter=rs),  mart = mart)
+	colnames(m) <- c("SNP", "CHR", "BP", "Allele")
+	
+	#Selects attributes
+	if (with.alleles) {
+		return(m)
+	} else {
+		return(m[, c("SNP", "CHR", "BP")])
+	}
+	
+}
+
+
+biomart.SNP.rsID <- function(chr, ps, allele0, allele1, mart, with.position=FALSE, with.alleles=FALSE)
+#' Fetches the rs SNP IDs given the chromosomal coordinates and alleles
+#'
+#' Uses biomaRt function to fetch the rs SNP ID for the given 
+#' chromosoma coordinates and alleles. If no SNP is found in that position with those alleles
+#' NA is returned. It uses the given BioMart database.
+#'
+#' @author Alessia Visconti, Niccolo' Rossi
+#' @param chr chromosome number (1, 2, ...)
+#' @param ps position (bp)
+#' @param allele0 alternate allele
+#' @param allele1 reference allele
+#' @param mart BioMart database
+#' @param with.position whether including chromosome name and start and end position (default: false)
+#' @param with.alleles whether including variant alleles (default: false, if with.position==TRUE is forced to TRUE)
+#' @return reference SNP IDs, or reference SNP IDs plus genomic coordinates and alleles
+#' @examples
+#' mybiomart <- biomart.fetch.SNP.grch37.mart()
+#' biomart.rsID(7, 24966446, "C", "A", mybiomart)
+#' biomart.rsID(17, 75020291, "A", "G", mybiomart)
+#' biomart.rsID(7, 24966446, "C", "A", mybiomart, with.position=TRUE)
+#' biomart.rsID(17, 75020291, "A", "G", mybiomart, with.alleles=TRUE)
+#' biomart.rsID(5, 70119760, "A", "G", mybiomart, with.alleles=TRUE)
+#' @export
+{
+	#Gets the alleles combination to look for
+	biallelic <- paste0("^", allele0, "/", allele1, "|", "^", allele1, "/", allele0)
+	multiallelic <-  paste0("^", allele0, "/*/", allele1, "|", "^", allele1, "/*/", allele0)
+	alleles <- paste(biallelic, multiallelic, sep="|")
+	
+	#Fetches SNPs and selects the correct one based on alleles
+	m <- biomart.SNPid.in.window(chr, ps, ps, mart, with.alleles=T)
+	m <- m[grepl(glob2rx(alleles), m$Allele), ]
+	
+	#No SNP in that position with the given alleles
+	if (nrow(m) == 0) return(NA)
+	
+	#Selects attributes
+	if (with.alleles) {
+		return(m)
+	} else if (with.position) {
+		return(m[, c("SNP", "CHR", "BP")])
+	} else {
+		return(m$SNP)
+	}
 }
 
 
