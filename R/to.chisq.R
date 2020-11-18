@@ -35,7 +35,7 @@ to.chisq <- function(values, type=c("zscore", "chisq", "pvalue"))
 	else if (type == "pvalue")
 	{
 		# For p-values, calculate chi-squared statistic
-		return (qchisq(1-values, 1))
+		return (stats::qchisq(1-values, 1))
 	}
 	else
 	{

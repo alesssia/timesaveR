@@ -14,7 +14,7 @@ remove.outliers <- function(v, n.sd=3)
 #' @export
 {
 	avg <- mean(v, na.rm=TRUE)
-	stdev <- sd(v, na.rm=TRUE)
+	stdev <- stats::sd(v, na.rm=TRUE)
 	v[v <= (avg - n.sd*stdev) | v >= (avg + n.sd*stdev)] <- NA
 	v
 }

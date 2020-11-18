@@ -16,6 +16,6 @@ genomic.inflation.factor <- function(values, type="pvalue")
 #' @export
 {
 	chisq <- to.chisq(values, type)
-	median(chisq)/qchisq(0.5,1)
+	stats::median(chisq)/stats::qchisq(0.5,1)
 }
 
