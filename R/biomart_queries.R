@@ -173,3 +173,23 @@ biomart.gene.in.window <- function(chr, start, end,  mart, with.position=FALSE)
 }
 
 
+biomart.gene.position <- function(gene, mart) 
+#' Fetches the chromosomal coordinates of the specified gene 
+#'
+#' Uses biomaRt function to fetch the chromosomal coordinates for the given 
+#' HUGO gene symbols. It uses the given BioMart database.
+#'
+#' @author Alessia Visconti
+#' @param gene the variant mame (HUGO gene symbols)
+#' @param mart BioMart database
+#' @return genomic coordinates
+#' @examples
+#' mybiomart <- biomart.fetch.GENE.grch37.mart()
+#' biomart.gene.position("DDX11L1", mybiomart)
+#' @export
+{
+	#Query
+	m <- biomaRt::getBM(attributes= c("chromosome_name", "start_position", "end_position"), filters = c("hgnc_symbol"), values=list(gene), mart = mart)
+	colnames(m) <- c("CHR", "START", "END")
+	m
+}
