@@ -111,22 +111,19 @@ biomart.SNP.rsID <- function(chr, ps, allele0, allele1, mart, with.position=FALS
 #' @return reference SNP IDs, or reference SNP IDs plus genomic coordinates and alleles
 #' @examples
 #' mybiomart <- biomart.fetch.SNP.grch37.mart()
-#' biomart.rsID(7, 24966446, "C", "A", mybiomart)
-#' biomart.rsID(17, 75020291, "A", "G", mybiomart)
-#' biomart.rsID(7, 24966446, "C", "A", mybiomart, with.position=TRUE)
-#' biomart.rsID(17, 75020291, "A", "G", mybiomart, with.alleles=TRUE)
-#' biomart.rsID(5, 70119760, "A", "G", mybiomart, with.alleles=TRUE)
+#' biomart.SNP.rsID(7, 24966446, "C", "A", mybiomart)
+#' biomart.SNP.rsID(17, 75020291, "A", "G", mybiomart)
+#' biomart.SNP.rsID(7, 24966446, "C", "A", mybiomart, with.position=TRUE)
+#' biomart.SNP.rsID(17, 75020291, "A", "G", mybiomart, with.alleles=TRUE)
+#' biomart.SNP.rsID(5, 70119760, "A", "G", mybiomart, with.alleles=TRUE)
 #' @export
 {
-	#Gets the alleles combination to look for
-	biallelic <- paste0("^", allele0, "/", allele1, "|", "^", allele1, "/", allele0)
-	multiallelic <-  paste0("^", allele0, "/*/", allele1, "|", "^", allele1, "/*/", allele0)
-	alleles <- paste(biallelic, multiallelic, sep="|")
-	
 	#Fetches SNPs and selects the correct one based on alleles
 	m <- biomart.SNPid.in.window(chr, ps, ps, mart, with.alleles=T)
-	m <- m[grepl(utils::glob2rx(alleles), m$Allele), ]
 	
+	#Gets the alleles combination I am looking for
+	m <- m[grepl(allele0, m$Allele) & grepl(allele1, m$Allele), ]
+		
 	#No SNP in that position with the given alleles
 	if (nrow(m) == 0) return(NA)
 	

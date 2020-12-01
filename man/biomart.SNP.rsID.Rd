@@ -39,11 +39,11 @@ NA is returned. It uses the given BioMart database.
 }
 \examples{
 mybiomart <- biomart.fetch.SNP.grch37.mart()
-biomart.rsID(7, 24966446, "C", "A", mybiomart)
-biomart.rsID(17, 75020291, "A", "G", mybiomart)
-biomart.rsID(7, 24966446, "C", "A", mybiomart, with.position=TRUE)
-biomart.rsID(17, 75020291, "A", "G", mybiomart, with.alleles=TRUE)
-biomart.rsID(5, 70119760, "A", "G", mybiomart, with.alleles=TRUE)
+biomart.SNP.rsID(7, 24966446, "C", "A", mybiomart)
+biomart.SNP.rsID(17, 75020291, "A", "G", mybiomart)
+biomart.SNP.rsID(7, 24966446, "C", "A", mybiomart, with.position=TRUE)
+biomart.SNP.rsID(17, 75020291, "A", "G", mybiomart, with.alleles=TRUE)
+biomart.SNP.rsID(5, 70119760, "A", "G", mybiomart, with.alleles=TRUE)
 }
 \author{
 Alessia Visconti, Niccolo' Rossi
