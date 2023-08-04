@@ -31,6 +31,13 @@ While some of the functions have been developed 100% by me, others are liberal (
 
 ## Changelog
 
+### 0.0.1.5 / 2023-08-04
+
+Enhancements:
+* Improved `inverse.normal`
+* Improved handling of errors/warning in `LDproxy`
+* `estimate.heritability` now checks the confidence intervals when extracting the best model
+
 ### 0.0.1.4 / 2020-09-02
 
 Enhancements:
@@ -42,7 +49,6 @@ Enhancements:
 
 Enhancements:
 * Functions `biomart.SNPid.in.window` can now return also the variant alleles
-
 
 ### 0.0.1.2 / 2019-10-25
 

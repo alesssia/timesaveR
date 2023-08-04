@@ -48,7 +48,22 @@ LDproxy <- function(rs, r2=c("r2", "d"), pop="GBR", LDlinktoken, min.r2=0.01, ma
 	if (grepl("is not a biallelic variant|is not in dbSNP build", proxies[[2]])) 
 	{
 		message <- unlist(strsplit(proxies[[2]], split=":"))[2]
-		stop(message)
+		print(paste(rs, ":", message))
+		return(NA)
+	}
+	
+	if (grepl("Raised when a generated error does not fall into any category", proxies[[2]])) 
+	{
+		message <- unlist(strsplit(proxies[[2]], split=":"))[2]
+		print(paste(rs, ":", message))
+		return(NA)
+	}
+	
+	if (grepl("is not in 1000G reference panel", proxies[[2]])) 
+	{
+		message <- unlist(strsplit(proxies[[2]], split=":"))[2]
+		print(paste(rs, ":", message))
+		return(NA)
 	}
 		
 	proxies <- t(sapply(proxies, function(s) unlist(strsplit(s, split="\t"))))

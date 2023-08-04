@@ -125,7 +125,7 @@ biomart.SNP.rsID <- function(chr, ps, allele0, allele1, mart, with.position=FALS
 	
 	#Fetches SNPs and selects the correct one based on alleles
 	m <- biomart.SNPid.in.window(chr, ps, ps, mart, with.alleles=T)
-	m <- m[grepl(glob2rx(alleles), m$Allele), ]
+	m <- m[grepl(utils::glob2rx(alleles), m$Allele), ]
 		
 	#No SNP in that position with the given alleles
 	if (nrow(m) == 0) return(NA)

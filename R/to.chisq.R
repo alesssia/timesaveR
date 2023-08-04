@@ -15,7 +15,7 @@ to.chisq <- function(values, type=c("zscore", "chisq", "pvalue"))
 #' @export
 {
 	# Values should be numeric
-	if (class(values) != "numeric")
+	if (!is.numeric(values))
 	{
 		stop("Numeric values required.")
 	}

@@ -13,13 +13,14 @@ inverse.normal <- function(v)
 {
 	#I need to do some tricks, otherwise rank+qnorm will
 	#impute my missing data
-	v <- v1 <- as.data.frame(cbind(1:length(v), v))
-	colnames(v) <- colnames(v1) <- c("index", "v")
+	v <- v1 <- data.frame(index=1:length(v), v=v)
 	v1 <- stats::na.omit(v1)
+	v <- v[!v$index %in% v1$index, ]
 	
 	mrank <- rank(v1$v, na.last=TRUE)
 	v1$v <- stats::qnorm(mrank/max(mrank+1))
 	
-	v <- merge(v, v1, by="index", all=TRUE)
-	v$v.y
+	v <- rbind(v1, v)
+	v <- v[order(v$index), ]
+	t(v)[2,]
 }
