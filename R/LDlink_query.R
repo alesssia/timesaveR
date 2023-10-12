@@ -65,6 +65,13 @@ LDproxy <- function(rs, r2=c("r2", "d"), pop="GBR", LDlinktoken, min.r2=0.01, ma
 		print(paste(rs, ":", message))
 		return(NA)
 	}
+
+	if (grepl("Variant is monoallelic in the chosen population(s).", proxies[[2]])) 
+	{
+		message <- unlist(strsplit(proxies[[2]], split=":"))[2]
+		print(paste(rs, ":", message))
+		return(NA)
+	}
 		
 	proxies <- t(sapply(proxies, function(s) unlist(strsplit(s, split="\t"))))
 	rownames(proxies) <- NULL
