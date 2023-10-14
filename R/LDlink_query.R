@@ -45,7 +45,7 @@ LDproxy <- function(rs, r2=c("r2", "d"), pop="GBR", LDlinktoken, min.r2=0.01, ma
 	proxies <- system(command, intern = TRUE)
 	
 	#Manages one of the errors returned by LDLink
-	if (grepl("is monoallelic in the chosen population|is not a biallelic variant|is not in dbSNP", proxies[[2]])) 
+	if (grepl("is monoallelic in the chosen population|is not a biallelic|is not in dbSNP", proxies[[2]])) 
 	{
 		message <- unlist(strsplit(proxies[[2]], split=":"))[2]
 		print(paste(rs, ":", message))
