@@ -45,7 +45,7 @@ LDproxy <- function(rs, r2=c("r2", "d"), pop="GBR", LDlinktoken, min.r2=0.01, ma
 	proxies <- system(command, intern = TRUE)
 	
 	#Manages one of the errors returned by LDLink
-	if (grepl("is not a biallelic variant|is not in dbSNP build", proxies[[2]])) 
+	if (grepl("is monoallelic in the chosen population|is not a biallelic variant|is not in dbSNP", proxies[[2]])) 
 	{
 		message <- unlist(strsplit(proxies[[2]], split=":"))[2]
 		print(paste(rs, ":", message))
@@ -60,13 +60,6 @@ LDproxy <- function(rs, r2=c("r2", "d"), pop="GBR", LDlinktoken, min.r2=0.01, ma
 	}
 	
 	if (grepl("is not in 1000G reference panel", proxies[[2]])) 
-	{
-		message <- unlist(strsplit(proxies[[2]], split=":"))[2]
-		print(paste(rs, ":", message))
-		return(NA)
-	}
-
-	if (grepl("Variant is monoallelic in the chosen population", proxies[[2]])) 
 	{
 		message <- unlist(strsplit(proxies[[2]], split=":"))[2]
 		print(paste(rs, ":", message))
