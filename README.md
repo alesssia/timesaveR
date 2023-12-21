@@ -31,6 +31,14 @@ While some of the functions have been developed 100% by me, others are liberal (
 
 ## Changelog
 
+### 0.0.1.6 / 2023-12-21
+
+Enhancements:
+* Added a second function (`LDtrait`) that queries the [GWAS Catalog](https://www.ebi.ac.uk/gwas/home) this time *via* the [LDproxy Programmatic Access](https://ldlink.nci.nih.gov/?tab=home)
+* `LDproxy` returns also the queried SNP (rsID)
+* All functions based on the [LDproxy Programmatic Access](https://ldlink.nci.nih.gov/?tab=home) are now suppressing messages written to `stderr`.
+
+
 ### 0.0.1.5 / 2023-08-04
 
 Enhancements:

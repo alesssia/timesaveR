@@ -16,7 +16,7 @@ LDpair(rs1, rs2, pop = "GBR", LDlinktoken)
 \item{LDlinktoken}{personal token (request via \url{https://ldlink.nci.nih.gov/?tab=apiaccess})}
 }
 \value{
-LD between the two given SNPs in the given population
+LD between the two given SNPs in the given population, or NA if one or both of the SNPs is not found
 }
 \description{
 Uses LDlink Programmatic Access via API (\url{https://ldlink.nci.nih.gov/?tab=ldpair}).
